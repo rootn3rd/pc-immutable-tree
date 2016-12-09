@@ -1,0 +1,11 @@
+<div *ngFor="let node of data">
+
+    <input type="checkbox" [ngModel]="node.get('isSelected')" (click)="nodeSelected.emit(node)">
+
+    <div style="display:inline;" class="name" [innerHTML]="node.get('name')" (click)="nodeClicked.emit(node)"></div>
+    <div style="display:inline;" class="desc" [innerHTML]="node.get('isSelected')"></div>
+
+    <div style="margin-left: 15px;" *ngIf="node.get('children')">
+        <treeview [data]="node.get('children')" (node-selected)="nodeSelected.emit($event)" (node-click)="nodeClicked.emit($event)"></treeview>
+    </div>
+</div>
